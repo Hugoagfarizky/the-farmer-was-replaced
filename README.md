@@ -1,13 +1,25 @@
 # The Miner Was Replaced
 
-Kumpulan kode saya untuk **The Miner Was Replaced**, DLC dari game pemrograman [The Farmer Was Replaced](https://store.steampowered.com/app/2060160/).
+Kumpulan kode saya untuk game pemrograman [The Farmer Was Replaced](https://store.steampowered.com/app/2060160/) dan DLC-nya, **The Miner Was Replaced**. Saya mulai dari nol, dari farming lalu lanjut ke mining.
 
 Repo ini bukan proyek resmi dan tidak berafiliasi dengan pengembang game.
 
 ## Isi repo
 
-- `scripts/`: kode dari save `MinerRun`
-- `sync.ps1`: skrip untuk menyalin kode dari save game ke `scripts/`
+- `farming/`: kode untuk farming
+- `mining/`: kode untuk mining
+- `sync.ps1`: skrip untuk menyalin kode dari save `MinerRun` ke repo
+
+## Penamaan file
+
+Di dalam game, semua kode disimpan di satu folder save. Awalan nama file menentukan folder tujuannya di repo:
+
+| Nama file di game | Folder di repo |
+|---|---|
+| `farm_hay` | `farming/` |
+| `mine_coal` | `mining/` |
+
+File tanpa awalan tersebut tidak ikut disalin. Saat memakai `import`, cukup tulis nama filenya, misalnya `import farm_hay`.
 
 ## Cara memperbarui
 
@@ -26,3 +38,5 @@ Repo ini bukan proyek resmi dan tidak berafiliasi dengan pengembang game.
    ```
 
 Untuk menyalin dari save lain, tambahkan `-SaveName NamaSave` di akhir perintah pertama.
+
+Skrip ini tidak pernah menghapus file di repo. Kalau ada file yang sudah dihapus di game, skrip hanya melaporkannya, dan file itu perlu dihapus sendiri dari repo.
