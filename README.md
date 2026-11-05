@@ -1,59 +1,63 @@
 # The Farmer Was Replaced
 
-Kumpulan kode saya untuk game pemrograman [The Farmer Was Replaced](https://store.steampowered.com/app/2060160/) dan DLC-nya, **The Miner Was Replaced**. Saya mulai dari nol, dari farming lalu lanjut ke mining.
+My code for the programming game [The Farmer Was Replaced](https://store.steampowered.com/app/2060160/) and its DLC, **The Miner Was Replaced**. I started from scratch with farming, then moved on to mining.
 
-Repo ini bukan proyek resmi dan tidak berafiliasi dengan pengembang game.
+This is not an official project and is not affiliated with the game's developers.
 
-## Isi repo
+## Repository contents
 
-- `farming/`: kode untuk farming
-- `mining/`: kode untuk mining
-- `sync.ps1`: skrip untuk menyalin kode dari save `MinerRun` ke repo
+- `farming/`: farming code
+- `mining/progress/`: my mining journey from start to finish, in numbered order
+- `mining/best/`: the best code for each mining item
+- `sync.ps1`: copies code from the `MinerRun` save into the repo
 
-## Kode farming
+## Farming code
 
-Setiap kode ditulis untuk leaderboard game dan berhenti sendiri saat target tercapai. Target otomatis menyesuaikan: farm 32×32 dengan banyak drone, atau farm 8×8 dengan satu drone.
+Each script targets one of the game's leaderboards and stops when it reaches the goal. The goal adapts automatically: a 32×32 farm with multiple drones, or an 8×8 farm with a single drone.
 
-| File | Hasil | Target banyak drone | Target satu drone |
+| File | Produces | Multi-drone goal | Single-drone goal |
 |---|---|---|---|
-| `farm_hay` | Hay | 2.000.000.000 | 100.000.000 |
-| `farm_wood` | Wood | 10.000.000.000 | 500.000.000 |
-| `farm_carrot` | Carrot | 2.000.000.000 | 100.000.000 |
-| `farm_pumpkin` | Pumpkin | 200.000.000 | 10.000.000 |
-| `farm_cactus` | Cactus | 33.554.432 | 131.072 |
-| `farm_sunflower` | Power | 100.000 | 10.000 |
-| `farm_maze` | Gold | 9.863.168 | 616.448 |
-| `farm_dino` | Bone | 33.488.928 | Tidak ada |
+| `farm_hay` | Hay | 2,000,000,000 | 100,000,000 |
+| `farm_wood` | Wood | 10,000,000,000 | 500,000,000 |
+| `farm_carrot` | Carrot | 2,000,000,000 | 100,000,000 |
+| `farm_pumpkin` | Pumpkin | 200,000,000 | 10,000,000 |
+| `farm_cactus` | Cactus | 33,554,432 | 131,072 |
+| `farm_sunflower` | Power | 100,000 | 10,000 |
+| `farm_maze` | Gold | 9,863,168 | 616,448 |
+| `farm_dino` | Bone | 33,488,928 | None |
 
-`farm_weird` tidak punya leaderboard. Kode ini mengumpulkan 2.000.000 Weird Substance untuk `farm_maze` di farm asli, atau berhenti saat fertilizer habis.
+`farm_weird` has no leaderboard. It collects 2,000,000 Weird Substance for running `farm_maze` on the real farm, or stops when the fertilizer runs out.
 
-## Penamaan file
+## File naming
 
-Di dalam game, semua kode disimpan di satu folder save. Awalan nama file menentukan folder tujuannya di repo:
+The game keeps all code in one save folder. A file's prefix decides where it goes in the repo:
 
-| Nama file di game | Folder di repo |
+| File name in the game | Repo folder |
 |---|---|
 | `farm_hay` | `farming/` |
-| `mine_coal` | `mining/` |
+| `mine_coal` | `mining/best/` |
+| `progress_01_first_dig` | `mining/progress/` |
 
-File tanpa awalan tersebut tidak ikut disalin. Saat memakai `import`, cukup tulis nama filenya, misalnya `import farm_hay`.
+Files in `mining/progress/` are numbered, and each new stage gets a new number so earlier stages aren't overwritten.
 
-## Cara memperbarui
+Files without one of these prefixes aren't copied. When using `import`, just write the file name, for example `import farm_hay`.
 
-1. Salin kode terbaru dari save game:
+## Updating
+
+1. Copy the latest code from the game save:
 
    ```powershell
    powershell -ExecutionPolicy Bypass -File sync.ps1
    ```
 
-2. Simpan dan unggah perubahannya:
+2. Commit and upload the changes:
 
    ```powershell
    git add .
-   git commit -m "Update kode"
+   git commit -m "Update code"
    git push
    ```
 
-Untuk menyalin dari save lain, tambahkan `-SaveName NamaSave` di akhir perintah pertama.
+To copy from a different save, add `-SaveName SaveName` to the end of the first command.
 
-Skrip ini tidak pernah menghapus file di repo. Kalau ada file yang sudah dihapus di game, skrip hanya melaporkannya, dan file itu perlu dihapus sendiri dari repo.
+The script never deletes files from the repo. If a file was deleted in the game, the script only reports it, and you need to delete it from the repo yourself.
