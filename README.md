@@ -25,6 +25,8 @@ Setiap kode ditulis untuk leaderboard game dan berhenti sendiri saat target terc
 | `farm_maze` | Gold | 9.863.168 | 616.448 |
 | `farm_dino` | Bone | 33.488.928 | Tidak ada |
 
+`farm_weird` tidak punya leaderboard. Kode ini mengumpulkan 2.000.000 Weird Substance untuk `farm_maze` di farm asli, atau berhenti saat fertilizer habis.
+
 ## Penamaan file
 
 Di dalam game, semua kode disimpan di satu folder save. Awalan nama file menentukan folder tujuannya di repo:
