@@ -1,4 +1,4 @@
-# The Miner Was Replaced
+# The Farmer Was Replaced
 
 Kumpulan kode saya untuk game pemrograman [The Farmer Was Replaced](https://store.steampowered.com/app/2060160/) dan DLC-nya, **The Miner Was Replaced**. Saya mulai dari nol, dari farming lalu lanjut ke mining.
 
