@@ -1,5 +1,5 @@
 # Achievement: Rice Farmer (farm a lot of rice).
-# Same start as mp05_rice_terrace, then the rice is harvested and replanted over and over, until you stop it.
+# Same start as 5_rice_terrace, then the rice is harvested and replanted over and over, until you stop it.
 # Phase 1: every drone digs each tile of its band of rows down to the clay sheet.
 # Phase 2: once every drone is done digging, every drone farms rice on its band:
 #   Clay -> plant -> Rice_Terrace (growing) -> Dry_Rice_Terrace (grown)
