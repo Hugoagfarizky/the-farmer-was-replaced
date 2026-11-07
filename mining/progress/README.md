@@ -12,7 +12,7 @@ File names start with `mp` and a two-digit number, because the game cuts file na
 | 2 | `mp02_unsafe_code` | Unsafe Code | Mining | Earned |
 | 3 | `mp03_miner` | Miner | Mining | Earned |
 | 4 | `mp04_coal` | Coal | Underground Senses, Coal | Earned |
-| 5 | `mp05_rice_terrace` | Rice Terrace | Rice | Code ready |
+| 5 | `mp05_rice_terrace` | Rice Terrace | Rice | Earned |
 | 6 | `mp06_rice_farmer` | Rice Farmer | Rice | Code ready |
 | 7 | `mp07_coal_miner` | Coal Miner | Underground Senses, Coal | Code ready |
 | 8 | `mp08_iron` | Iron | Iron | |
