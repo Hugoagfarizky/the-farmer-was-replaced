@@ -16,9 +16,9 @@ Each file is named after its achievement, with its place in the order in front, 
 | 6 | `6_rice_farmer` | Rice Farmer | Rice | Earned |
 | 7 | `7_coal_miner` | Coal Miner | Underground Senses, Coal | Earned |
 | 8 | `8_iron` | Iron | Iron | Earned |
-| 9 | `9_iron_miner` | Iron Miner | Iron | |
-| 10 | `10_broken_hoe` | Broken Hoe | Iron, Prospecting | |
-| 11 | `11_prospector` | Prospector | Prospecting | |
+| 9 | `9_prospector` | Prospector | Prospecting | Code ready |
+| 10 | `10_iron_miner` | Iron Miner | Iron, Prospecting | Code ready |
+| 11 | `11_broken_hoe` | Broken Hoe | Mining (reach `Grounds.Rock`) | Code ready |
 | 12 | `12_bamboo` | Bamboo | Bamboo | |
 | 13 | `13_bamboo_farmer` | Bamboo Farmer | Bamboo | |
 | 14 | `14_quartz` | Quartz | Quartz | |
