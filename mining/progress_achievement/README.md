@@ -15,7 +15,7 @@ Each file is named after its achievement, with its place in the order in front, 
 | 5 | `5_rice_terrace` | Rice Terrace | Rice | Earned |
 | 6 | `6_rice_farmer` | Rice Farmer | Rice | Earned |
 | 7 | `7_coal_miner` | Coal Miner | Underground Senses, Coal | Earned |
-| 8 | `8_iron` | Iron | Iron | Code ready |
+| 8 | `8_iron` | Iron | Iron | Earned |
 | 9 | `9_iron_miner` | Iron Miner | Iron | |
 | 10 | `10_broken_hoe` | Broken Hoe | Iron, Prospecting | |
 | 11 | `11_prospector` | Prospector | Prospecting | |
