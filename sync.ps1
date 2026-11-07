@@ -1,13 +1,13 @@
 # Copies your code from the game's save folder into the repo, sorted by file name:
 #   farm_*.py goes to farming/, mine_*.py goes to mining/best/,
-#   and progress_*.py goes to mining/progress/.
+#   and mp##_*.py goes to mining/progress/.
 # Only reads the save folder, and never deletes anything from the repo.
 param(
     [string]$SaveName = "MinerRun"
 )
 
 $saveDir = Join-Path $env:USERPROFILE "AppData\LocalLow\TheFarmerWasReplaced\TheFarmerWasReplaced\Saves\$SaveName"
-$targets = [ordered]@{ "farm_*.py" = "farming"; "mine_*.py" = "mining\best"; "progress_*.py" = "mining\progress" }
+$targets = [ordered]@{ "farm_*.py" = "farming"; "mine_*.py" = "mining\best"; "mp[0-9][0-9]_*.py" = "mining\progress" }
 
 if (-not (Test-Path -LiteralPath $saveDir)) {
     Write-Error "Save '$SaveName' not found at: $saveDir"
@@ -34,7 +34,7 @@ foreach ($pattern in $targets.Keys) {
         ForEach-Object { Write-Output "  Not in save, kept in repo: $($_.Name)" }
 }
 
-$skipped = @($sourceFiles | Where-Object { $_.Name -notlike "farm_*.py" -and $_.Name -notlike "mine_*.py" -and $_.Name -notlike "progress_*.py" })
+$skipped = @($sourceFiles | Where-Object { $_.Name -notlike "farm_*.py" -and $_.Name -notlike "mine_*.py" -and $_.Name -notlike "mp[0-9][0-9]_*.py" })
 foreach ($file in $skipped) {
-    Write-Output "Skipped, needs a farm_, mine_, or progress_ prefix: $($file.Name)"
+    Write-Output "Skipped, needs a farm_, mine_, or mp##_ prefix: $($file.Name)"
 }
