@@ -21,8 +21,8 @@ Each file is named after its achievement, with its place in the order in front, 
 | 11 | `11_broken_hoe` | Broken Hoe | Mining (reach `Grounds.Rock`) | Earned |
 | 12 | `12_bamboo` | Bamboo | Bamboo | Earned |
 | 13 | `13_bamboo_farmer` | Bamboo Farmer | Bamboo | Earned |
-| 14 | `14_quartz` | Quartz | Quartz | |
-| 15 | `15_quartz_miner` | Quartz Miner | Quartz | |
+| 14 | `14_quartz` | Quartz | Quartz | Code ready |
+| 15 | `15_quartz_miner` | Quartz Miner | Quartz | Code ready |
 | 16 | `16_mushroom` | Mushroom | Mushrooms | |
 | 17 | `17_mushroom_miner` | Mushroom Miner | Mushrooms | |
 | 18 | `18_not_muchroom` | Not Muchroom | Mushrooms | |
