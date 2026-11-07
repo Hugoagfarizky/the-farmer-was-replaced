@@ -7,7 +7,7 @@ This is not an official project and is not affiliated with the game's developers
 ## Repository contents
 
 - `farming/`: farming code
-- `mining/progress/`: my mining journey from start to finish, in numbered order
+- `mining/progress/`: my mining journey from the first dig to the last achievement, one achievement per file (see [mining/progress/README.md](mining/progress/README.md))
 - `mining/best/`: the best code for each mining item
 - `sync.ps1`: copies code from the `MinerRun` save into the repo
 
@@ -36,9 +36,9 @@ The game keeps all code in one save folder. A file's prefix decides where it goe
 |---|---|
 | `farm_hay` | `farming/` |
 | `mine_coal` | `mining/best/` |
-| `progress_01_first_dig` | `mining/progress/` |
+| `mp01_digging_down` | `mining/progress/` |
 
-Files in `mining/progress/` are numbered, and each new stage gets a new number so earlier stages aren't overwritten.
+Files in `mining/progress/` start with `mp` and a two-digit number, one file per achievement, so earlier files aren't overwritten. The game cuts file names at 20 characters, so keep names short.
 
 Files without one of these prefixes aren't copied. When using `import`, just write the file name, for example `import farm_hay`.
 
