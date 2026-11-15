@@ -29,11 +29,11 @@ Each file is named after its achievement, with its place in the order in front, 
 | 19 | `19_not_muchroom` | Not Muchroom | Try and fail to push a mushroom. | Mushrooms | Earned |
 | 20 | `20_matchmaker` | Matchmaker | Match up 95% of mushrooms in a stratum. | Mushrooms | |
 | 21 | `21_long_distance` | Long Distance Friendship | Match a mushroom with a same-colored mushroom from a lower mushroom stratum. | Mushrooms | Earned |
-| 22 | `22_place` | Place | Place a block. | Colorful Blocks | Code ready |
-| 23 | `23_builder` | Builder | Place 1,000 blocks. | Colorful Blocks | Code ready |
-| 24 | `24_big_builder` | Big Builder | Place 10,000 blocks. | Colorful Blocks | Code ready |
+| 22 | `22_place` | Place | Place a block. | Colorful Blocks | Earned |
+| 23 | `23_builder` | Builder | Place 1,000 blocks. | Colorful Blocks | Earned |
+| 24 | `24_big_builder` | Big Builder | Place 10,000 blocks. | Colorful Blocks | Earned |
 | 25 | `25_skyscraper` | Skyscraper | Place a block to reach the height of +150 z. | Colorful Blocks | Code ready |
-| 26 | `26_picasso` | Picasso | Place 1,000 colored blocks. | Colorful Blocks | Code ready |
+| 26 | `26_picasso` | Picasso | Place 1,000 colored blocks. | Colorful Blocks | Earned |
 | 27 | `27_dynamite` | Dynamite | Find a dynamite layer. | Dynamite | |
 | 28 | `28_dynamite_miner` | Dynamite Miner | Mine 1,000 dynamite. | Dynamite | |
 | 29 | `29_dynamite_disposal` | Dynamite Disposal | Dig up all duds in a dynamite stratum. | Dynamite | |
