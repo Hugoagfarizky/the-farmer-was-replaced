@@ -34,9 +34,9 @@ Each file is named after its achievement, with its place in the order in front, 
 | 24 | `24_big_builder` | Big Builder | Place 10,000 blocks. | Colorful Blocks | Earned |
 | 25 | `25_skyscraper` | Skyscraper | Place a block to reach the height of +150 z. | Colorful Blocks | Earned |
 | 26 | `26_picasso` | Picasso | Place 1,000 colored blocks. | Colorful Blocks | Earned |
-| 27 | `27_dynamite` | Dynamite | Find a dynamite layer. | Dynamite | |
-| 28 | `28_dynamite_miner` | Dynamite Miner | Mine 1,000 dynamite. | Dynamite | |
-| 29 | `29_dynamite_disposal` | Dynamite Disposal | Dig up all duds in a dynamite stratum. | Dynamite | |
+| 27 | `27_dynamite` | Dynamite | Find a dynamite layer. | Dynamite | Code ready |
+| 28 | `28_dynamite_miner` | Dynamite Miner | Mine 1,000 dynamite. | Dynamite | Code ready |
+| 29 | `29_dynamite_disposal` | Dynamite Disposal | Dig up all duds in a dynamite stratum. | Dynamite | Code ready |
 | 30 | `30_disposal_spec` | Dynamite Disposal Specialist | Dig up all duds in a dynamite stratum on a 32x32 farm at -600 z or lower. | Dynamite | |
 | 31 | `31_pyramid` | Pyramid | Find and restore a pyramid. | Pyramid | |
 | 32 | `32_egyptologist` | Egyptologist | Find and restore 200 pyramids. | Pyramid | |
