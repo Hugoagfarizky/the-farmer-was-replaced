@@ -37,7 +37,7 @@ Each file is named after its achievement, with its place in the order in front, 
 | 27 | `27_dynamite` | Dynamite | Find a dynamite layer. | Dynamite | Earned |
 | 28 | `28_dynamite_miner` | Dynamite Miner | Mine 1,000 dynamite. | Dynamite | Earned |
 | 29 | `29_dynamite_disposal` | Dynamite Disposal | Dig up all duds in a dynamite stratum. | Dynamite | Earned |
-| 30 | `30_disposal_spec` | Dynamite Disposal Specialist | Dig up all duds in a dynamite stratum on a 32x32 farm at -600 z or lower. | Dynamite | |
+| 30 | `30_disposal_spec` | Dynamite Disposal Specialist | Dig up all duds in a dynamite stratum on a 32x32 farm at -600 z or lower. | Dynamite | Code ready |
 | 31 | `31_pyramid` | Pyramid | Find and restore a pyramid. | Pyramid | |
 | 32 | `32_egyptologist` | Egyptologist | Find and restore 200 pyramids. | Pyramid | |
 | 33 | `33_great_pyramid` | Great Pyramid | Find and restore a pyramid with a 29x29 base. | Pyramid | |
