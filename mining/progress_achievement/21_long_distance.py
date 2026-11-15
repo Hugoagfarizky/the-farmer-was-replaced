@@ -1,19 +1,20 @@
 # Achievement: Long Distance Friendship (match a mushroom with a same-colored mushroom from a lower stratum).
-# Measured with probe_mushroom on a 32x32 farm: stratum 1 starts at about z -629 and is a few blocks thick,
-# stratum 2 starts at about z -704. Mushrooms survive digs next to them but cave in when a neighbor
-# is more than 3 blocks deeper. Digging a mushroom gives nothing.
 #
-# A pushed block falls down any open column until it lands on the next block.
-# Digging a shaft at B also clears the rock in the four tiles next to B (ring R), so each R becomes
-# an open column down to stratum 2. The tile S two steps from B in the same direction still has its
-# stratum 1 mushrooms, so a mushroom pushed from S toward R falls all the way onto R's stratum 2 top.
+# What earlier runs showed:
+#   - The strata sit at different depths after every clear (for example -490 and -634, or -74 and -260).
+#   - Digging a mushroom gives nothing. Mushrooms survive digs next to them, but cave in when a
+#     neighboring column is more than 3 blocks deeper (stability 3).
+#   - A deep shaft makes the land around it cave in like a bowl, so a mushroom from the upper stratum
+#     can't just wait next to a shaft and be pushed in. It caves in first.
 #
-# One drone, until you stop it:
-#   1. Dig a shaft at B through stratum 1 down to stratum 2, then one block more, so the R tiles
-#      show their stratum 2 tops. Read their types.
-#   2. For each direction, walk two tiles out to S and dig down to S's stratum 1. Push the top block
-#      toward R when its type matches R's stratum 2 top, otherwise dig it away and try the next one.
-#   3. Clear the farm and start over at a new B.
+# So this carries a mushroom down like an elevator, until you stop it:
+#   1. Dig at B through the upper stratum. The four neighboring tiles keep their mushrooms.
+#   2. Push one neighbor's top mushroom M into B. M lands on B's column, and the drone stands on it.
+#   3. Dig the column E next to B one block at a time. Each dig removes the block next to it in B,
+#      which is the rock under M, so M drops one level. E is never more than 1 deeper, so M doesn't cave in.
+#   4. When M stops dropping, it is resting on the lower stratum. If the types match, both get harvested.
+#      If not, dig E's top up to twice and push M into E when E's top has M's type.
+#   5. Clear the farm and try again somewhere else.
 # Every step is written to output.txt with quick_print, so a failed run shows what happened.
 n = get_world_size()
 dirs = [North, East, South, West]
@@ -37,13 +38,15 @@ def goto(x, y):
 def opposite(k):
 	return dirs[(k + 2) % 4]
 
-def ring_types():
+def top_type(dr):
+	if get_ground_type(dr) == Grounds.Mushroom:
+		return measure(dr)
+	return get_ground_type(dr)
+
+def ring():
 	out = []
 	for dr in dirs:
-		if get_ground_type(dr) == Grounds.Mushroom:
-			out.append(measure(dr))
-		else:
-			out.append(None)
+		out.append(top_type(dr))
 	return out
 
 def attempt(bx, by):
@@ -51,35 +54,71 @@ def attempt(bx, by):
 	while get_ground_type() != Grounds.Mushroom:
 		dig()
 	z1 = get_pos_z()
-	quick_print("B", bx, by, "stratum 1 at", z1)
-	while get_ground_type() != Grounds.Mushroom or get_pos_z() > z1 - 10:
+	quick_print("B", bx, by, "upper stratum at", z1, "ring", ring())
+	while get_ground_type() == Grounds.Mushroom:
 		dig()
-	quick_print("stratum 2 at", get_pos_z(), "ring before", ring_types())
-	dig()
-	types = ring_types()
-	quick_print("ring stratum 2 tops", types, "B now z", get_pos_z())
-	for k in range(4):
-		t = types[k]
-		if t == None:
-			continue
-		move(dirs[k])
-		quick_print(" dir", k, "R z", get_pos_z(), get_ground_type())
-		move(dirs[k])
-		quick_print(" dir", k, "S z", get_pos_z(), get_ground_type())
-		while get_ground_type() != Grounds.Mushroom and get_pos_z() > z1 - 5:
+	quick_print("B through the upper stratum, z", get_pos_z(), get_ground_type(), "ring", ring())
+
+	# Step 2: push a neighbor's top mushroom into B.
+	k = None
+	for i in range(4):
+		if k == None and get_ground_type(dirs[i]) == Grounds.Mushroom:
+			k = i
+	if k == None:
+		quick_print("no mushroom next to B")
+		return False
+	m = measure(dirs[k])
+	move(dirs[k])
+	quick_print("on neighbor", k, "z", get_pos_z(), "type", m)
+	ok = push(opposite(k))
+	move(opposite(k))
+	quick_print("push into B ok", ok, "B z", get_pos_z(), top_type(None))
+	if not ok or get_ground_type() != Grounds.Mushroom:
+		return False
+
+	# Step 3: the elevator. E is a neighbor of B other than where M came from.
+	e = (k + 1) % 4
+	last = get_pos_z()
+	still = 0
+	gained = num_items(Items.Mushroom)
+	while still < 2:
+		move(dirs[e])
+		dig()
+		ez = get_pos_z()
+		eg = get_ground_type()
+		move(opposite(e))
+		bz = get_pos_z()
+		bg = get_ground_type()
+		got = num_items(Items.Mushroom) - gained
+		quick_print(" E z", ez, eg, "| B z", bz, bg, "mushrooms gained", got)
+		if got > 0:
+			quick_print("MATCH while dropping")
+			return True
+		if bg != Grounds.Mushroom:
+			quick_print("M is gone")
+			return False
+		if ez < bz and bz == last:
+			still += 1
+		else:
+			still = 0
+		last = bz
+		if bz < z1 - 600:
+			quick_print("too deep")
+			return False
+
+	# Step 4: M rests on something special. Try E's top below it.
+	quick_print("M stopped at z", get_pos_z(), "type", measure(), "E top", top_type(dirs[e]))
+	for j in range(3):
+		if top_type(dirs[e]) == m:
+			ok = push(dirs[e])
+			quick_print(" push M into E ok", ok, "mushrooms gained", num_items(Items.Mushroom) - gained)
+			if ok:
+				return True
+		if j < 2:
+			move(dirs[e])
 			dig()
-		quick_print(" S reached z", get_pos_z(), get_ground_type(), "R beside", get_ground_type(opposite(k)))
-		while get_ground_type() == Grounds.Mushroom:
-			s = measure()
-			if s == t:
-				ok = push(opposite(k))
-				quick_print("  push type", s, "onto", t, "ok", ok)
-				if ok:
-					quick_print("  MATCH")
-					return True
-			dig()
-		move(opposite(k))
-		move(opposite(k))
+			move(opposite(e))
+	quick_print("no match this time")
 	return False
 
 bx = n // 2
