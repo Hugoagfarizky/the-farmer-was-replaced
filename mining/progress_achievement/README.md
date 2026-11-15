@@ -23,7 +23,7 @@ Each file is named after its achievement, with its place in the order in front, 
 | 13 | `13_bamboo_farmer` | Bamboo Farmer | Harvest 1,000 bamboo. | Bamboo | Earned |
 | 14 | `14_quartz` | Quartz | Find a quartz block. | Quartz | Earned |
 | 15 | `15_quartz_miner` | Quartz Miner | Mine 1,000 quartz. | Quartz | Earned |
-| 16 | `16_paleontologist` | Pumpkin Paleontologist | Mine 1,000 petrified pumpkins. | Petrified Pumpkins | Code ready |
+| 16 | `16_paleontologist` | Pumpkin Paleontologist | Mine 1,000 petrified pumpkins. | Petrified Pumpkins | Earned |
 | 17 | `17_mushroom` | Mushroom | Find a mushroom. | Mushrooms | |
 | 18 | `18_mushroom_miner` | Mushroom Miner | Harvest 1,000 mushrooms. | Mushrooms | |
 | 19 | `19_not_muchroom` | Not Muchroom | Try and fail to push a mushroom. | Mushrooms | |
