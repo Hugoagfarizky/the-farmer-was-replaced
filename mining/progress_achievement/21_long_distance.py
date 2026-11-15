@@ -7,13 +7,16 @@
 #   - A deep shaft makes the land around it cave in like a bowl, so a mushroom from the upper stratum
 #     can't just wait next to a shaft and be pushed in. It caves in first.
 #
-# So this carries a mushroom down like an elevator, until you stop it:
+#   - Removing the blocks next to a column doesn't take away the block under a mushroom, so a mushroom
+#     doesn't drop when the column beside it is dug.
+#
+# So this walks a mushroom down a staircase, until you stop it:
 #   1. Dig at B through the upper stratum. The four neighboring tiles keep their mushrooms.
-#   2. Push one neighbor's top mushroom M into B. M lands on B's column, and the drone stands on it.
-#   3. Dig the column E next to B one block at a time. Each dig removes the block next to it in B,
-#      which is the rock under M, so M drops one level. E is never more than 1 deeper, so M doesn't cave in.
-#   4. When M stops dropping, it is resting on the lower stratum. If the types match, both get harvested.
-#      If not, dig E's top up to twice and push M into E when E's top has M's type.
+#   2. Push one neighbor's top mushroom M into B. M lands on B's column.
+#   3. Take turns with B and its neighbor E: dig the column M isn't on until its top is 3 below M,
+#      then push M across. M falls 2 levels, and its neighbor is never more than 3 deeper, so it doesn't cave in.
+#   4. In the lower stratum, stop digging as soon as the other column's top has M's type and push M
+#      onto it. They match and get harvested.
 #   5. Clear the farm and try again somewhere else.
 # Every step is written to output.txt with quick_print, so a failed run shows what happened.
 n = get_world_size()
@@ -76,50 +79,46 @@ def attempt(bx, by):
 	if not ok or get_ground_type() != Grounds.Mushroom:
 		return False
 
-	# Step 3: the elevator. E is a neighbor of B other than where M came from.
+	# Step 3: the staircase. M moves back and forth between B and its neighbor E, dropping 2 levels each time.
+	# Removing blocks next to a column doesn't take away the block under M (an earlier run showed that),
+	# so M only goes down by being pushed onto a lower column.
+	# Mushrooms above `low` may still belong to the upper stratum, so M must not land on its own type there.
+	low = get_pos_z() - 10
 	e = (k + 1) % 4
-	last = get_pos_z()
-	still = 0
+	toward = [dirs[e], opposite(e)]
+	side = 0
 	gained = num_items(Items.Mushroom)
-	while still < 2:
-		move(dirs[e])
-		dig()
-		ez = get_pos_z()
-		eg = get_ground_type()
-		move(opposite(e))
-		bz = get_pos_z()
-		bg = get_ground_type()
-		got = num_items(Items.Mushroom) - gained
-		quick_print(" E z", ez, eg, "| B z", bz, bg, "mushrooms gained", got)
-		if got > 0:
-			quick_print("MATCH while dropping")
-			return True
-		if bg != Grounds.Mushroom:
-			quick_print("M is gone")
-			return False
-		if ez < bz and bz == last:
-			still += 1
-		else:
-			still = 0
-		last = bz
-		if bz < z1 - 600:
+	while True:
+		ml = get_pos_z()
+		if ml < z1 - 1500:
 			quick_print("too deep")
 			return False
-
-	# Step 4: M rests on something special. Try E's top below it.
-	quick_print("M stopped at z", get_pos_z(), "type", measure(), "E top", top_type(dirs[e]))
-	for j in range(3):
-		if top_type(dirs[e]) == m:
-			ok = push(dirs[e])
-			quick_print(" push M into E ok", ok, "mushrooms gained", num_items(Items.Mushroom) - gained)
-			if ok:
-				return True
-		if j < 2:
-			move(dirs[e])
-			dig()
-			move(opposite(e))
-	quick_print("no match this time")
-	return False
+		move(toward[side])
+		# Dig the other column down until its top is 3 below M. In the lower stratum, stop early
+		# when its top has M's type, so M lands on it and they match.
+		found = False
+		while get_pos_z() > ml - 3 and not found:
+			if get_pos_z() < ml and get_pos_z() < low and get_ground_type() == Grounds.Mushroom and measure() == m:
+				found = True
+			else:
+				dig()
+		tz = get_pos_z()
+		tg = top_type(None)
+		move(toward[1 - side])
+		ok = push(toward[side])
+		got = num_items(Items.Mushroom) - gained
+		quick_print(" M z", ml, "-> other top z", tz, tg, "found", found, "push ok", ok, "mushrooms gained", got)
+		if got > 0:
+			quick_print("MATCH")
+			return True
+		if not ok:
+			quick_print("push failed")
+			return False
+		move(toward[side])
+		if get_ground_type() != Grounds.Mushroom:
+			quick_print("M is gone at z", get_pos_z())
+			return False
+		side = 1 - side
 
 bx = n // 2
 by = n // 2
