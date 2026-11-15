@@ -35,13 +35,17 @@ def band_rows(k):
 		return n - h * (d - 1)
 	return h
 
+def gap(a, b):
+	g = a - b
+	if g < 0:
+		g = -g
+	if g > n - g:
+		g = n - g
+	return g
+
 def target(x, y):
-	dx = abs(x - c)
-	if dx > n - dx:
-		dx = n - dx
-	dy = abs(y - c)
-	if dy > n - dy:
-		dy = n - dy
+	dx = gap(x, c)
+	dy = gap(y, c)
 	if s < 1:
 		return goal
 	t = goal - s * (dx + dy)
