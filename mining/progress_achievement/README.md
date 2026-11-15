@@ -29,19 +29,19 @@ Each file is named after its achievement, with its place in the order in front, 
 | 19 | `19_not_muchroom` | Not Muchroom | Try and fail to push a mushroom. | Mushrooms | Earned |
 | 20 | `20_matchmaker` | Matchmaker | Match up 95% of mushrooms in a stratum. | Mushrooms | |
 | 21 | `21_long_distance` | Long Distance Friendship | Match a mushroom with a same-colored mushroom from a lower mushroom stratum. | Mushrooms | Earned |
-| 22 | `22_place` | Place | Place a block. | Mushrooms (for `place()`) | |
-| 23 | `23_builder` | Builder | Place 1,000 blocks. | Mushrooms (for `place()`) | |
-| 24 | `24_big_builder` | Big Builder | Place 10,000 blocks. | Mushrooms (for `place()`) | |
-| 25 | `25_skyscraper` | Skyscraper | Place a block to reach the height of +150 z. | Mushrooms (for `place()`) | |
-| 26 | `26_dynamite` | Dynamite | Find a dynamite layer. | Dynamite | |
-| 27 | `27_dynamite_miner` | Dynamite Miner | Mine 1,000 dynamite. | Dynamite | |
-| 28 | `28_dynamite_disposal` | Dynamite Disposal | Dig up all duds in a dynamite stratum. | Dynamite | |
-| 29 | `29_disposal_spec` | Dynamite Disposal Specialist | Dig up all duds in a dynamite stratum on a 32x32 farm at -600 z or lower. | Dynamite | |
-| 30 | `30_pyramid` | Pyramid | Find and restore a pyramid. | Pyramid | |
-| 31 | `31_egyptologist` | Egyptologist | Find and restore 200 pyramids. | Pyramid | |
-| 32 | `32_great_pyramid` | Great Pyramid | Find and restore a pyramid with a 29x29 base. | Pyramid | |
-| 33 | `33_colorful_pyramid` | Colorful Pyramid | Restore a pyramid using colored blocks. | Pyramid, Colorful Blocks | |
-| 34 | `34_picasso` | Picasso | Place 1,000 colored blocks. | Colorful Blocks | |
+| 22 | `22_place` | Place | Place a block. | Colorful Blocks | Code ready |
+| 23 | `23_builder` | Builder | Place 1,000 blocks. | Colorful Blocks | Code ready |
+| 24 | `24_big_builder` | Big Builder | Place 10,000 blocks. | Colorful Blocks | Code ready |
+| 25 | `25_skyscraper` | Skyscraper | Place a block to reach the height of +150 z. | Colorful Blocks | Code ready |
+| 26 | `26_picasso` | Picasso | Place 1,000 colored blocks. | Colorful Blocks | Code ready |
+| 27 | `27_dynamite` | Dynamite | Find a dynamite layer. | Dynamite | |
+| 28 | `28_dynamite_miner` | Dynamite Miner | Mine 1,000 dynamite. | Dynamite | |
+| 29 | `29_dynamite_disposal` | Dynamite Disposal | Dig up all duds in a dynamite stratum. | Dynamite | |
+| 30 | `30_disposal_spec` | Dynamite Disposal Specialist | Dig up all duds in a dynamite stratum on a 32x32 farm at -600 z or lower. | Dynamite | |
+| 31 | `31_pyramid` | Pyramid | Find and restore a pyramid. | Pyramid | |
+| 32 | `32_egyptologist` | Egyptologist | Find and restore 200 pyramids. | Pyramid | |
+| 33 | `33_great_pyramid` | Great Pyramid | Find and restore a pyramid with a 29x29 base. | Pyramid | |
+| 34 | `34_colorful_pyramid` | Colorful Pyramid | Restore a pyramid using colored blocks. | Pyramid, Colorful Blocks | |
 | 35 | `35_treasure_map` | Treasure Map | Use a map to find the treasure. | Treasure Map | |
 | 36 | `36_big_treasure` | Big Treasure | Use 200 treasure maps to find the treasure. | Treasure Map | |
 | 37 | `37_treasure_master` | Treasure Map Master | Find the treasure without moving over the same block twice. | Treasure Map | |
