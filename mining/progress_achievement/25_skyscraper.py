@@ -1,35 +1,25 @@
 # Achievement: Skyscraper (place a block to reach the height of +150 z).
-# One drone stacks a single pillar in the middle of the farm, until you stop it.
-# Placed blocks may cave in when the columns next to them are much lower, and each block type has
-# its own stability. So the drone first places one block of each kind it can place, reads their
-# stability, and builds the pillar out of the most stable kind.
-# Every block's result goes to output.txt, so if the pillar stops growing, the log shows where and why.
+# The game refuses to place a block too far above the farm's average height (a single pillar
+# stopped a little past z 70 on the full farm). So this shrinks the farm to 3x3 with
+# set_world_size(3), which only lasts while the program runs, and raises all 9 tiles together.
+# Nine drones, one per tile, each stack rock (stability 3) on their own tile at the same pace,
+# so the average rises with them and nothing caves in. They stop at z 155 and then do flips
+# until you stop the program.
+set_world_size(3)
 clear()
-n = get_world_size()
-for i in range(n // 2):
-	move(East)
-	move(North)
 
-kinds = [Grounds.Block_Red, Grounds.Block_Green, Grounds.Block_Blue, Grounds.Rock, Grounds.Dirt]
-best = Grounds.Block_Blue
-best_s = -1
-for g in kinds:
-	if place(g):
-		s = get_stability()
-		quick_print("stability of", g, s)
-		if s > best_s:
-			best = g
-			best_s = s
-	else:
-		quick_print("could not place", g)
-quick_print("pillar made of", best, "stability", best_s)
+def tower(x, y):
+	for i in range(x):
+		move(East)
+	for i in range(y):
+		move(North)
+	while get_pos_z() < 155:
+		place(Grounds.Rock)
+	while True:
+		do_a_flip()
 
-last = get_pos_z()
-while True:
-	ok = place(best)
-	z = get_pos_z()
-	if not ok or z <= last:
-		quick_print("placed", ok, "but z went from", last, "to", z, "ground", get_ground_type())
-	elif z % 10 == 0:
-		quick_print("z", z)
-	last = z
+for x in range(3):
+	for y in range(3):
+		if x > 0 or y > 0:
+			spawn_drone(tower, x, y)
+tower(0, 0)
