@@ -28,7 +28,7 @@ Each file is named after its achievement, with its place in the order in front, 
 | 18 | `18_mushroom_miner` | Mushroom Miner | Harvest 1,000 mushrooms. | Mushrooms | Earned |
 | 19 | `19_not_muchroom` | Not Muchroom | Try and fail to push a mushroom. | Mushrooms | Earned |
 | 20 | `20_matchmaker` | Matchmaker | Match up 95% of mushrooms in a stratum. | Mushrooms | |
-| 21 | `21_long_distance` | Long Distance Friendship | Match a mushroom with a same-colored mushroom from a lower mushroom stratum. | Mushrooms | Code ready |
+| 21 | `21_long_distance` | Long Distance Friendship | Match a mushroom with a same-colored mushroom from a lower mushroom stratum. | Mushrooms | Earned |
 | 22 | `22_place` | Place | Place a block. | Mushrooms (for `place()`) | |
 | 23 | `23_builder` | Builder | Place 1,000 blocks. | Mushrooms (for `place()`) | |
 | 24 | `24_big_builder` | Big Builder | Place 10,000 blocks. | Mushrooms (for `place()`) | |
